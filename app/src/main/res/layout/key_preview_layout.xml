@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="60dp"
+    android:layout_height="40dp"
+    android:background="@color/keyPreviewColor"
+    android:textAlignment="center"
+    android:textColor="@color/keyTextColor"
+    android:textSize="40sp"
+    android:textStyle="normal|bold" />

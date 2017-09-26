@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="/Users/MaihanNijat/Desktop/AndroidDev/AfghanKeyboard/AfghanKeyboard_v2/emoji/build/intermediates/bundles/default/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="059d0515d07046c1065131870179a0ff1feb81f0">
+        <dex dex="/Users/MaihanNijat/Desktop/AndroidDev/AfghanKeyboard/AfghanKeyboard_v2/app/build/intermediates/pre-dexed/release/classes_baf79c3b9608cde26b2d86af162467a8c9d80a6f.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/MaihanNijat/Desktop/AndroidDev/AfghanKeyboard/AfghanKeyboard_v2/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.0"
+        sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
+        <dex dex="/Users/MaihanNijat/Desktop/AndroidDev/AfghanKeyboard/AfghanKeyboard_v2/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_d8a7b0c3b1efef048e60ccbabb8dcc74019b09e8/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/MaihanNijat/Desktop/AndroidDev/AfghanKeyboard/AfghanKeyboard_v2/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.0"
+        sha1="50708cfaacc10e49e1b0503f29e9ebbf74006f33">
+        <dex dex="/Users/MaihanNijat/Desktop/AndroidDev/AfghanKeyboard/AfghanKeyboard_v2/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_7b15d90b6b096ee2001834538b3d49344fad4ba2/classes.dex" />
+    </item>
+
+</items>

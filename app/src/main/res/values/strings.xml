@@ -1,0 +1,47 @@
+<resources>
+    <string name="app_name">Afghan Keyboard</string>
+
+    <string name="ime_name">Sample Soft Keyboard</string>
+
+    <!-- Symbols that are commonly considered word separators in this language -->
+    <string name="word_separators">\u0020.,;:!?\n()[]*&amp;@{}/&lt;&gt;_+=|&quot;</string>
+
+    <!-- Labels on soft keys -->
+    <string name="label_go_key">Go</string>
+    <string name="label_next_key">Next</string>
+    <string name="label_send_key">Send</string>
+
+    <!-- Labels for subtype -->
+    <string name="label_subtype_generic">%s</string>
+    <string name="label_subtype_en_GB">English (GB)</string>
+
+    <!-- Titles for ImePreference -->
+    <string name="settings_name">Afghan Keyboard Settings</string>
+    <string name="language_selection_title">Input languages</string>
+    <string name="select_language">Select input languages</string>
+    <string name="general_category">General</string>
+
+    <!-- Database strings -->
+    <string name="database_name">database.sqlite</string>
+    <string name="en_table_name">en_table</string>
+    <string name="pa_table_name">pa_table</string>
+    <string name="fa_table_name">fa_table</string>
+    <string name="freq_column">freq</string>
+    <string name="word_column">word</string>
+
+    <string name="sound">Sound on keypress</string>
+    <string name="show_suggestions">Show suggestions</string>
+
+    <string name="banner_unitID">ca-app-pub-6404264627814552/4373874422</string>
+    <string name="interstitial_unitID">ca-app-pub-6404264627814552/2757540420</string>
+
+    <string name="enable_in_settings">ENABLE IN SETTINGS</string>
+    <string name="add_languages">ADD LANGUAGES</string>
+    <string name="choose_input_method">CHOOSE INPUT METHOD</string>
+    <string name="step_1">Step 1</string>
+    <string name="step_2">Step 2</string>
+    <string name="step_3">Step 3</string>
+    <string name="choose_theme">CHOOSE THEME</string>
+    <string name="choose_theme_title">Keyboard Themes</string>
+    <string name="test_the_keyboard_here">Test the keyboard here.</string>
+</resources>
