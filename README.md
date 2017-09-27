@@ -19,17 +19,18 @@ The app has settings to have full control over the application. The users can tu
 
 Features Summary:
 <ul>
-<li>1- English keyboard</li>
-<li>2- Pashto keyboard</li>
-<li>3- Dari (Farsi) keyboard</li>
-<li>4- Very clean user interface</li>
-<li>5- Ten unique themes included</li>
-<li>6- Emoticons/ Smileys</li>
-<li>7- Words prediction/ suggestion</li>
-<li>8- Sounds on key press</li>
-<li>9- Popup keyboard for additional keys</li>
-<li>10- Zero width space (break letters but no space)</li>
-<li>11- Settings to control Input Methods and other features</li>
+<li>English keyboard</li>
+<li>Pashto keyboard</li>
+<li>Dari (Farsi) keyboard</li>
+<li>Very clean user interface</li>
+<li>Ten unique themes included</li>
+<li>Emoticons/ Smileys</li>
+<li>Words prediction/ suggestion</li>
+<li>Sounds on key press</li>
+<li>Popup keyboard for additional keys</li>
+<li>Zero width space (break letters but no space)</li>
+<li>Settings to control Input Methods and other features</li>
 </ul>
 
+The application is available on Play Store: <a href="https://play.google.com/store/apps/details?id=com.sunzala.afghankeyboard" />
 
