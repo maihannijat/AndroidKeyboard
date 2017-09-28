@@ -7,9 +7,10 @@ android {
         applicationId "com.sunzala.afghankeyboard"
         minSdkVersion 19
         targetSdkVersion 26
-        versionCode 10
-        versionName "2.0"
+        versionCode 13
+        versionName "2.1.2"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
     }
     buildTypes {
         release {
