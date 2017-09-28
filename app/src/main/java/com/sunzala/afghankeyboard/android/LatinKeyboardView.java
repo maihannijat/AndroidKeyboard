@@ -169,7 +169,7 @@ public class LatinKeyboardView extends KeyboardView {
         super.onDraw(canvas);
         paint.setTextAlign(Paint.Align.CENTER);
         paint.setTextSize(getResources().getDimension(R.dimen.canvasTextSize));
-        int keyYLocation = (int) getResources().getDimension(R.dimen.canvasKeyY);
+        int keyYLocation = getResources().getDimensionPixelSize(R.dimen.canvasKeyY);
         paint.setColor(getResources().getColor(R.color.white));
         //get all your keys and draw whatever you want
         List<Key> keys = getKeyboard().getKeys();

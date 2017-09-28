@@ -32,8 +32,8 @@
     <string name="sound">Sound on keypress</string>
     <string name="show_suggestions">Show suggestions</string>
 
-    <string name="banner_unitID">ca-app-pub-6404264627814552/4373874422</string>
-    <string name="interstitial_unitID">ca-app-pub-6404264627814552/2757540420</string>
+    <string name="banner_unitID">ca-app-pub-6404264627814552/8236146819</string>
+    <string name="interstitial_unitID">ca-app-pub-6404264627814552/5366440892</string>
 
     <string name="enable_in_settings">ENABLE IN SETTINGS</string>
     <string name="add_languages">ADD LANGUAGES</string>
