@@ -2,13 +2,13 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 26
-    buildToolsVersion '26'
+    buildToolsVersion '26.0.2'
     defaultConfig {
         applicationId "com.sunzala.afghankeyboard"
         minSdkVersion 19
         targetSdkVersion 26
-        versionCode 13
-        versionName "2.1.2"
+        versionCode 14
+        versionName "3.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }
@@ -26,10 +26,11 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     compile project(':emoji')
-    compile 'com.android.support:appcompat-v7:26.+'
-    compile 'com.android.support:support-v4:26'
-    compile 'com.android.support:recyclerview-v7:26.+'
-    compile 'com.android.support:design:26.+'
+    compile 'com.android.support:appcompat-v7:26.1.0'
+    compile 'com.android.support:support-v4:26.1.0'
+    compile 'com.android.support:recyclerview-v7:26.1.0'
+    compile 'com.android.support:design:26.1.0'
     testCompile 'junit:junit:4.12'
-    compile 'com.google.android.gms:play-services-ads:11.0.4'
+    compile 'com.google.android.gms:play-services-ads:11.8.0'
+
 }

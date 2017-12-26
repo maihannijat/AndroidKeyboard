@@ -92,6 +92,8 @@ public class SoftKeyboard extends InputMethodService
     private LatinKeyboard mQwertyKeyboard;
     private LatinKeyboard mFarsiKeyboard;
     private LatinKeyboard mPashtoKeyboard;
+    private LatinKeyboard mPashtoLatinKeyboard;
+    private LatinKeyboard mPashtoLatinShiftedKeyboard;
     private LatinKeyboard mNumbersKeyboard;
     private LatinKeyboard mSymbolsKeyboard;
     private LatinKeyboard mSymbolsShiftedKeyboard;
@@ -99,7 +101,7 @@ public class SoftKeyboard extends InputMethodService
     private LatinKeyboard mSymbolsShiftedAFKeyboard;
     private LatinKeyboard mPhoneKeyboard;
     private LatinKeyboard mCurKeyboard;
-    public static LatinKeyboard mActiveKeyboard;
+    public static String mActiveKeyboard;
 
 
     private EmojiconsPopup popupWindow = null;
@@ -138,6 +140,8 @@ public class SoftKeyboard extends InputMethodService
         mSymbolsShiftedKeyboard = new LatinKeyboard(this, R.xml.symbols_shift);
         mFarsiKeyboard = new LatinKeyboard(this, R.xml.farsi);
         mPashtoKeyboard = new LatinKeyboard(this, R.xml.pashto);
+        mPashtoLatinKeyboard = new LatinKeyboard(this, R.xml.pashto_latin);
+        mPashtoLatinShiftedKeyboard = new LatinKeyboard(this, R.xml.pashto_latin_shift);
         mNumbersKeyboard = new LatinKeyboard(this, R.xml.numbers);
         mSymbolsAFKeyboard = new LatinKeyboard(this, R.xml.symbols_af);
         mSymbolsShiftedAFKeyboard = new LatinKeyboard(this, R.xml.symbols_shift_af);
@@ -187,13 +191,19 @@ public class SoftKeyboard extends InputMethodService
         String s = subtype.getLocale();
         switch (s) {
             case "ps_AF":
-                mActiveKeyboard = mPashtoKeyboard;
+                mActiveKeyboard = "ps_AF";
                 mCurKeyboard = mPashtoKeyboard;
                 break;
+            case "ps_latin_AF":
+                mActiveKeyboard = "ps_latin_AF";
+                mCurKeyboard = mPashtoLatinKeyboard;
+                break;
             case "fa_AF":
+                mActiveKeyboard = "fa_AF";
                 mCurKeyboard = mFarsiKeyboard;
                 break;
             default:
+                mActiveKeyboard = "en_US";
                 mCurKeyboard = mQwertyKeyboard;
         }
 
@@ -201,8 +211,8 @@ public class SoftKeyboard extends InputMethodService
     }
 
     private void setLatinKeyboard(LatinKeyboard nextKeyboard) {
-        boolean shouldSupportLanguageSwitchKey = mInputMethodManager.shouldOfferSwitchingToNextInputMethod(getToken());
-        nextKeyboard.setLanguageSwitchKeyVisibility(shouldSupportLanguageSwitchKey);
+        //boolean shouldSupportLanguageSwitchKey = mInputMethodManager.shouldOfferSwitchingToNextInputMethod(getToken());
+        nextKeyboard.setLanguageSwitchKeyVisibility(true);
         mInputView.setKeyboard(nextKeyboard);
     }
 
@@ -288,7 +298,7 @@ public class SoftKeyboard extends InputMethodService
                     // Our predictions are not useful for e-mail addresses
                     // or URIs.
                     mPredictionOn = false;
-
+                    mActiveKeyboard = "en_US";
                     mCurKeyboard = mQwertyKeyboard;
                 }
 
@@ -314,7 +324,7 @@ public class SoftKeyboard extends InputMethodService
                 mCurKeyboard = getSelectedSubtype();
                 updateShiftKeyState(attribute);
         }
-
+        if (mCurKeyboard == mPashtoLatinKeyboard || mCurKeyboard == mPashtoLatinShiftedKeyboard) mPredictionOn = false;
         if(mPredictionOn) db = new DatabaseManager(this);
 
         // Update the label on the enter key, depending on what the application
@@ -377,13 +387,19 @@ public class SoftKeyboard extends InputMethodService
         String s = subtype.getLocale();
         switch (s) {
             case "ps_AF":
-                mActiveKeyboard = mPashtoKeyboard;
+                mActiveKeyboard = "ps_AF";
                 mCurKeyboard = mPashtoKeyboard;
                 break;
+            case "ps_latin_AF":
+                mActiveKeyboard = "ps_latin_AF";
+                mCurKeyboard = mPashtoLatinKeyboard;
+                break;
             case "fa_AF":
+                mActiveKeyboard = "fa_AF";
                 mCurKeyboard = mFarsiKeyboard;
                 break;
             default:
+                mActiveKeyboard = "en_US";
                 mCurKeyboard = mQwertyKeyboard;
         }
 
@@ -660,10 +676,7 @@ public class SoftKeyboard extends InputMethodService
         } else if (primaryCode == Keyboard.KEYCODE_MODE_CHANGE
                 && mInputView != null) {
             Keyboard current = mInputView.getKeyboard();
-            if (current == mSymbolsKeyboard || current == mSymbolsShiftedKeyboard) {
-                setLatinKeyboard(mQwertyKeyboard);
-                updateShiftIcon();
-            } else if ((current == mSymbolsAFKeyboard || current == mSymbolsShiftedAFKeyboard)
+            if ((current == mSymbolsAFKeyboard || current == mSymbolsShiftedAFKeyboard)
                     && getSelectedSubtype() == mFarsiKeyboard) {
                 setLatinKeyboard(mFarsiKeyboard);
                 updateShiftIcon();
@@ -674,6 +687,13 @@ public class SoftKeyboard extends InputMethodService
             } else if (current == mFarsiKeyboard || current == mPashtoKeyboard) {
                 setLatinKeyboard(mSymbolsAFKeyboard);
                 mSymbolsAFKeyboard.setShifted(false);
+            } else if ((current == mSymbolsKeyboard || current == mSymbolsShiftedKeyboard) && getSelectedSubtype() == mPashtoLatinKeyboard) {
+                setLatinKeyboard(mPashtoLatinKeyboard);
+                updateShiftIcon();
+            }
+            else if (current == mSymbolsKeyboard || current == mSymbolsShiftedKeyboard) {
+                setLatinKeyboard(mQwertyKeyboard);
+                updateShiftIcon();
             } else {
                 setLatinKeyboard(mSymbolsKeyboard);
                 mSymbolsKeyboard.setShifted(false);
@@ -685,6 +705,14 @@ public class SoftKeyboard extends InputMethodService
         } else if (primaryCode == -10001) {
             // Zero Space
             mComposing.append("\u200C");
+            getCurrentInputConnection().setComposingText(mComposing, 1);
+        } else if (primaryCode == -10002) {
+            // ẋ
+            mComposing.append("ẋ");
+            getCurrentInputConnection().setComposingText(mComposing, 1);
+        } else if (primaryCode == -10003) {
+            // Ẋ
+            mComposing.append("\u1E8A");
             getCurrentInputConnection().setComposingText(mComposing, 1);
         } else if (primaryCode == 1567) {
             // Question mark.
@@ -805,6 +833,14 @@ public class SoftKeyboard extends InputMethodService
             mSymbolsShiftedKeyboard.setShifted(false);
             setLatinKeyboard(mSymbolsKeyboard);
             mSymbolsKeyboard.setShifted(false);
+        } else if(mPashtoLatinKeyboard == currentKeyboard) {
+            setLatinKeyboard(mPashtoLatinShiftedKeyboard);
+            mActiveKeyboard = "ps_latin_AF_Shift";
+            mPashtoLatinKeyboard.setShifted(false);
+        } else if(mPashtoLatinShiftedKeyboard == currentKeyboard) {
+            setLatinKeyboard(mPashtoLatinKeyboard);
+            mActiveKeyboard = "ps_latin_AF";
+            mPashtoLatinShiftedKeyboard.setShifted(false);
         }
 
         updateShiftIcon();
@@ -822,9 +858,9 @@ public class SoftKeyboard extends InputMethodService
             if (currentKey.codes[0] == -1) {
                 currentKey.label = null;
                 if (mInputView.isShifted() || mCapsLock) {
-                    currentKey.icon = getResources().getDrawable(R.drawable.ic_shift_on_24dp);
+                    currentKey.icon = getResources().getDrawable(R.drawable.ic_keyboard_capslock_on_24dp);
                 } else {
-                    currentKey.icon = getResources().getDrawable(R.drawable.ic_shift_24dp);
+                    currentKey.icon = getResources().getDrawable(R.drawable.ic_keyboard_capslock_24dp);
                 }
                 break;
             }
@@ -1021,18 +1057,5 @@ public class SoftKeyboard extends InputMethodService
      */
     public void clearCandidateView() {
         if(list != null)list.clear();
-    }
-
-    /**
-     * The method is created to pass current active subType to LatinKeyboardView.
-     *
-     * @return LatinKeyboard
-     */
-    public LatinKeyboard getPashtoKeyboard() {
-        if (mActiveKeyboard != null) {
-            return mActiveKeyboard;
-        } else {
-            return null;
-        }
     }
 }

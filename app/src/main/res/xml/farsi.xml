@@ -124,7 +124,7 @@
             android:keyWidth="15%p" />
         <Key
             android:codes="-10000"
-            android:keyIcon="@drawable/ic_insert_emoticon_24dp"
+            android:keyIcon="@drawable/ic_insert_emoticon_white_24dp"
             android:keyWidth="10%p" />
         <!--
             android:codes: -101 is not a framework-defined key code but a key code that is
@@ -137,7 +137,7 @@
         <Key
             android:codes="32"
             android:isRepeatable="true"
-            android:keyIcon="@drawable/ic_space_24dp"
+            android:keyIcon="@drawable/ic_space_bar_white_24dp"
             android:keyWidth="30%p" />
         <Key
             android:codes="-10001"
@@ -151,7 +151,7 @@
         <Key
             android:codes="10"
             android:keyEdgeFlags="right"
-            android:keyIcon="@drawable/ic_next_circle_filled_24dp"
+            android:keyIcon="@drawable/ic_next_circle_filled_45dp"
             android:keyWidth="15%p" />
     </Row>
 </Keyboard>

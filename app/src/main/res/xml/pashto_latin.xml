@@ -23,24 +23,24 @@
     <Row>
         <Key
             android:keyEdgeFlags="left"
-            android:keyLabel="q"
+            android:keyLabel="w"
             android:popupCharacters="1"
             android:popupKeyboard="@xml/popup_keyboard" />
         <Key
-            android:keyLabel="w"
+            android:keyLabel="ə"
             android:popupCharacters="2"
             android:popupKeyboard="@xml/popup_keyboard" />
         <Key
             android:keyLabel="e"
-            android:popupCharacters="3ëèéê"
+            android:popupCharacters="3"
             android:popupKeyboard="@xml/popup_keyboard" />
         <Key
             android:keyLabel="r"
-            android:popupCharacters="4"
+            android:popupCharacters="ṛ4"
             android:popupKeyboard="@xml/popup_keyboard" />
         <Key
             android:keyLabel="t"
-            android:popupCharacters="5"
+            android:popupCharacters="ṭ5"
             android:popupKeyboard="@xml/popup_keyboard" />
         <Key
             android:keyLabel="y"
@@ -48,7 +48,7 @@
             android:popupKeyboard="@xml/popup_keyboard" />
         <Key
             android:keyLabel="u"
-            android:popupCharacters="7úùûū"
+            android:popupCharacters="7"
             android:popupKeyboard="@xml/popup_keyboard" />
         <Key
             android:keyLabel="i"
@@ -56,7 +56,7 @@
             android:popupKeyboard="@xml/popup_keyboard" />
         <Key
             android:keyLabel="o"
-            android:popupCharacters="9œôóō"
+            android:popupCharacters="9"
             android:popupKeyboard="@xml/popup_keyboard" />
         <Key
             android:keyEdgeFlags="right"
@@ -70,21 +70,27 @@
             android:horizontalGap="4%p"
             android:keyEdgeFlags="left"
             android:keyLabel="a"
-            android:popupCharacters="æáãäāȁȃå"
-            android:popupKeyboard="@xml/popup_keyboard" />
+            android:popupCharacters="áā"
+            android:popupKeyboard="@xml/popup_keyboard"/>
         <Key
             android:keyLabel="s"
-            android:popupCharacters="ϐ"
+            android:popupCharacters="š"
             android:popupKeyboard="@xml/popup_keyboard" />
-        <Key android:keyLabel="d" />
+        <Key android:keyLabel="d"
+            android:popupCharacters="ḍ"
+            android:popupKeyboard="@xml/popup_keyboard"/>
         <Key android:keyLabel="f" />
-        <Key android:keyLabel="g" />
+        <Key android:keyLabel="g"
+            android:popupCharacters="ǧ"
+            android:popupKeyboard="@xml/popup_keyboard"/>
         <Key android:keyLabel="h" />
-        <Key android:keyLabel="j" />
+        <Key android:keyLabel="ǰ" />
         <Key android:keyLabel="k" />
         <Key
             android:keyEdgeFlags="right"
-            android:keyLabel="l" />
+            android:keyLabel="l"
+            android:popupCharacters="ɣ"
+            android:popupKeyboard="@xml/popup_keyboard"/>
     </Row>
 
     <Row>
@@ -95,17 +101,20 @@
             android:keyEdgeFlags="left"
             android:keyIcon="@drawable/ic_keyboard_capslock_24dp"
             android:keyWidth="15%p" />
-        <Key android:keyLabel="z" />
+        <Key android:keyLabel="z"
+            android:popupCharacters="ž"
+            android:popupKeyboard="@xml/popup_keyboard"/>
         <Key android:keyLabel="x" />
-        <Key
-            android:keyLabel="c"
-            android:popupCharacters="ç"
-            android:popupKeyboard="@xml/popup_keyboard" />
-        <Key android:keyLabel="v" />
+        <Key android:codes="-10002"
+            android:keyLabel="&#x1E8B;"
+            android:keyOutputText="&#x1E8B;"/>
+        <Key android:keyLabel="c"
+            android:popupCharacters="č"
+            android:popupKeyboard="@xml/popup_keyboard"/>
         <Key android:keyLabel="b" />
         <Key
             android:keyLabel="n"
-            android:popupCharacters="ñ"
+            android:popupCharacters="ṇ"
             android:popupKeyboard="@xml/popup_keyboard" />
         <Key android:keyLabel="m" />
         <Key
