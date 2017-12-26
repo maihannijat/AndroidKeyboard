@@ -14,6 +14,7 @@
     <!-- Labels for subtype -->
     <string name="label_subtype_generic">%s</string>
     <string name="label_subtype_en_GB">English (GB)</string>
+    <string name="pashto_latin_label">Pashto Latin</string>
 
     <!-- Titles for ImePreference -->
     <string name="settings_name">Afghan Keyboard Settings</string>

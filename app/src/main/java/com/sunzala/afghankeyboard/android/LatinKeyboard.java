@@ -116,7 +116,7 @@ class LatinKeyboard extends Keyboard {
                 mEnterKey.label = res.getText(R.string.label_next_key);
                 break;
             case EditorInfo.IME_ACTION_SEARCH:
-                mEnterKey.icon = res.getDrawable(R.drawable.ic_search_24dp);
+                mEnterKey.icon = res.getDrawable(R.drawable.ic_search_45dp);
                 mEnterKey.label = null;
                 break;
             case EditorInfo.IME_ACTION_SEND:
@@ -125,7 +125,7 @@ class LatinKeyboard extends Keyboard {
                 mEnterKey.label = res.getText(R.string.label_send_key);
                 break;
             default:
-                mEnterKey.icon = res.getDrawable(R.drawable.ic_check_circle_24dp);
+                mEnterKey.icon = res.getDrawable(R.drawable.ic_check_circle_45dp);
                 mEnterKey.label = null;
                 break;
         }

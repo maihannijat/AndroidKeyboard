@@ -70,10 +70,10 @@
         <Key
             android:codes="32"
             android:isRepeatable="true"
-            android:keyIcon="@drawable/ic_space_24dp" />
+            android:keyIcon="@drawable/ic_space_bar_white_24dp" />
         <Key
             android:codes="10"
             android:keyEdgeFlags="right"
-            android:keyIcon="@drawable/ic_next_circle_filled_24dp" />
+            android:keyIcon="@drawable/ic_next_circle_filled_45dp" />
     </Row>
 </Keyboard>

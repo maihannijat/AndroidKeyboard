@@ -40,7 +40,9 @@
                 android:resource="@xml/method" />
         </service>
 
-        <activity android:name="com.sunzala.afghankeyboard.ThemeActivity" android:label="@string/choose_theme_title"></activity>
+        <activity
+            android:name="com.sunzala.afghankeyboard.ThemeActivity"
+            android:label="@string/choose_theme_title" />
     </application>
 
 </manifest>
