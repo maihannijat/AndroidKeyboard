@@ -84,7 +84,9 @@
             android:popupCharacters="Ǧ"
             android:popupKeyboard="@xml/popup_keyboard"/>
         <Key android:keyLabel="H" />
-        <Key android:keyLabel="ǰ" />
+        <Key android:keyLabel="J"
+            android:popupCharacters="ǰ"
+            android:popupKeyboard="@xml/popup_keyboard"/>
         <Key android:keyLabel="K" />
         <Key
             android:keyEdgeFlags="right"

@@ -26,5 +26,6 @@
         android:layout_marginStart="8dp"
         android:background="@color/keyboardBackgroundColor"
         android:clickable="true"
-        app:srcCompat="@drawable/ic_close_24dp" />
+        app:srcCompat="@drawable/ic_close_24dp"
+        android:focusable="true" />
 </LinearLayout>
