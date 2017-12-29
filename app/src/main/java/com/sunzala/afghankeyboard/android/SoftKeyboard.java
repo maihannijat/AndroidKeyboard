@@ -22,12 +22,10 @@ import android.inputmethodservice.Keyboard;
 import android.inputmethodservice.KeyboardView;
 import android.media.AudioManager;
 import android.os.AsyncTask;
-import android.os.Build;
 import android.os.IBinder;
 import android.preference.PreferenceManager;
 import android.text.InputType;
 import android.text.method.MetaKeyKeyListener;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyCharacterMap;
 import android.view.KeyEvent;
@@ -109,6 +107,10 @@ public class SoftKeyboard extends InputMethodService
     private ArrayList<String> list;
     SharedPreferences sharedPreferences;
 
+    static final int[] THE_LAYOUTS={R.layout.input_1, R.layout.input_2, R.layout.input_3,
+            R.layout.input_4, R.layout.input_5, R.layout.input_6, R.layout.input_7,
+            R.layout.input_8, R.layout.input_9, R.layout.input_10};
+
     // Main initialization of the input method component.
     // Be sure to call to super class.
     @Override
@@ -158,10 +160,10 @@ public class SoftKeyboard extends InputMethodService
     @Override
     public View onCreateInputView() {
 
+
         // Set custom theme to input view.
-        int themeLayout = sharedPreferences.getInt(THEME_KEY, R.layout.input_1);
         mInputView = (LatinKeyboardView) getLayoutInflater().inflate(
-                themeLayout, null);
+                THE_LAYOUTS[sharedPreferences.getInt(THEME_KEY, 1)], null);
         mInputView.setOnKeyboardActionListener(this);
 
         // Close popup keyboard when screen is touched, if it's showing
@@ -180,6 +182,7 @@ public class SoftKeyboard extends InputMethodService
 
         return mInputView;
     }
+
 
     /**
      * Use the right subtype based on language selected.
@@ -610,11 +613,7 @@ public class SoftKeyboard extends InputMethodService
      * Helper to determine if a given character code is alphabetic.
      */
     private boolean isAlphabet(int code) {
-        if (Character.isLetter(code)) {
-            return true;
-        } else {
-            return false;
-        }
+        return Character.isLetter(code);
     }
 
     /**
@@ -730,19 +729,21 @@ public class SoftKeyboard extends InputMethodService
      */
     private void playClick(int keyCode) {
         AudioManager am = (AudioManager) getSystemService(AUDIO_SERVICE);
-        switch (keyCode) {
-            case 32:
-                am.playSoundEffect(AudioManager.FX_KEYPRESS_SPACEBAR);
-                break;
-            case Keyboard.KEYCODE_DONE:
-            case 10:
-                am.playSoundEffect(AudioManager.FX_KEYPRESS_RETURN);
-                break;
-            case Keyboard.KEYCODE_DELETE:
-                am.playSoundEffect(AudioManager.FX_KEYPRESS_DELETE);
-                break;
-            default:
-                am.playSoundEffect(AudioManager.FX_KEYPRESS_STANDARD);
+        if (am != null) {
+            switch (keyCode) {
+                case 32:
+                    am.playSoundEffect(AudioManager.FX_KEYPRESS_SPACEBAR);
+                    break;
+                case Keyboard.KEYCODE_DONE:
+                case 10:
+                    am.playSoundEffect(AudioManager.FX_KEYPRESS_RETURN);
+                    break;
+                case Keyboard.KEYCODE_DELETE:
+                    am.playSoundEffect(AudioManager.FX_KEYPRESS_DELETE);
+                    break;
+                default:
+                    am.playSoundEffect(AudioManager.FX_KEYPRESS_STANDARD);
+            }
         }
     }
 
@@ -851,7 +852,7 @@ public class SoftKeyboard extends InputMethodService
      */
     private void updateShiftIcon() {
         List<Keyboard.Key> keys = mQwertyKeyboard.getKeys();
-        Keyboard.Key currentKey = null;
+        Keyboard.Key currentKey;
         for (int i = 0; i < keys.size() - 1; i++) {
             currentKey = keys.get(i);
             mInputView.invalidateAllKeys();
@@ -984,37 +985,39 @@ public class SoftKeyboard extends InputMethodService
      */
     public void showEmoticons() {
         LayoutInflater layoutInflater = (LayoutInflater) getBaseContext().getSystemService(LAYOUT_INFLATER_SERVICE);
-        View popupView = layoutInflater.inflate(R.layout.emoji_listview_layout, null);
-        popupWindow = new EmojiconsPopup(popupView, this);
-        popupWindow.setSizeForSoftKeyboard();
-        popupWindow.setSize(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
-        popupWindow.showAtLocation(mInputView.getRootView(), Gravity.BOTTOM, 0, 0);
-        // If the text keyboard closes, also dismiss the emoji popup
-        popupWindow.setOnSoftKeyboardOpenCloseListener(new EmojiconsPopup.OnSoftKeyboardOpenCloseListener() {
-            @Override
-            public void onKeyboardOpen(int keyBoardHeight) {
-            }
+        if (layoutInflater != null) {
+            View popupView = layoutInflater.inflate(R.layout.emoji_listview_layout, null);
+            popupWindow = new EmojiconsPopup(popupView, this);
+            popupWindow.setSizeForSoftKeyboard();
+            popupWindow.setSize(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
+            popupWindow.showAtLocation(mInputView.getRootView(), Gravity.BOTTOM, 0, 0);
+            // If the text keyboard closes, also dismiss the emoji popup
+            popupWindow.setOnSoftKeyboardOpenCloseListener(new EmojiconsPopup.OnSoftKeyboardOpenCloseListener() {
+                @Override
+                public void onKeyboardOpen(int keyBoardHeight) {
+                }
 
-            @Override
-            public void onKeyboardClose() {
-                if (popupWindow.isShowing())
-                    popupWindow.dismiss();
-            }
-        });
-        popupWindow.setOnEmojiconClickedListener(new EmojiconGridView.OnEmojiconClickedListener() {
-            @Override
-            public void onEmojiconClicked(Emojicon emojicon) {
-                mComposing.append(emojicon.getEmoji());
-                commitTyped(getCurrentInputConnection());
-            }
-        });
-        popupWindow.setOnEmojiconBackspaceClickedListener(new EmojiconsPopup.OnEmojiconBackspaceClickedListener() {
-            @Override
-            public void onEmojiconBackspaceClicked(View v) {
-                KeyEvent event = new KeyEvent(0, 0, 0, KeyEvent.KEYCODE_DEL, 0, 0, 0, 0, KeyEvent.KEYCODE_ENDCALL);
-                handleBackspace();
-            }
-        });
+                @Override
+                public void onKeyboardClose() {
+                    if (popupWindow.isShowing())
+                        popupWindow.dismiss();
+                }
+            });
+            popupWindow.setOnEmojiconClickedListener(new EmojiconGridView.OnEmojiconClickedListener() {
+                @Override
+                public void onEmojiconClicked(Emojicon emojicon) {
+                    mComposing.append(emojicon.getEmoji());
+                    commitTyped(getCurrentInputConnection());
+                }
+            });
+            popupWindow.setOnEmojiconBackspaceClickedListener(new EmojiconsPopup.OnEmojiconBackspaceClickedListener() {
+                @Override
+                public void onEmojiconBackspaceClicked(View v) {
+                    KeyEvent event = new KeyEvent(0, 0, 0, KeyEvent.KEYCODE_DEL, 0, 0, 0, 0, KeyEvent.KEYCODE_ENDCALL);
+                    handleBackspace();
+                }
+            });
+        }
     }
 
     public void closeEmoticons() {
@@ -1027,6 +1030,7 @@ public class SoftKeyboard extends InputMethodService
      * The database query is executed in the background.
      */
     private class SelectDataTask extends AsyncTask<String, Void, ArrayList<String>> {
+
         private String subType;
 
         void getSubtype(LatinKeyboard mCurKeyboard) {

@@ -55,7 +55,7 @@ public class LatinKeyboardView extends KeyboardView {
         } else if (key.codes[0] == 'e' || key.codes[0] == 'E' || key.codes[0] == '۳') {
             getOnKeyboardActionListener().onKey('3', null);
             return true;
-        } else if (key.codes[0] == 'r' || key.codes[0] == 'R' || key.codes[0] == '۴') {
+        } else if (((key.codes[0] == 'r' || key.codes[0] == 'R') && SoftKeyboard.mActiveKeyboard == "en_US") || key.codes[0] == '۴') {
             getOnKeyboardActionListener().onKey('4', null);
             return true;
         } else if (((key.codes[0] == 't' || key.codes[0] == 'T') && SoftKeyboard.mActiveKeyboard == "en_US") || key.codes[0] == '۵') {
@@ -190,6 +190,9 @@ public class LatinKeyboardView extends KeyboardView {
         } else if (SoftKeyboard.mActiveKeyboard != "en_US" && key.codes[0] == 'l') {
             getOnKeyboardActionListener().onKey('ɣ', null);
             return true;
+        } else if (SoftKeyboard.mActiveKeyboard != "en_US" && key.codes[0] == 'j') {
+            getOnKeyboardActionListener().onKey('ǰ', null);
+            return true;
         } else if (SoftKeyboard.mActiveKeyboard != "en_US" && key.codes[0] == 'S') {
             getOnKeyboardActionListener().onKey('Š', null);
             return true;
@@ -210,6 +213,9 @@ public class LatinKeyboardView extends KeyboardView {
             return true;
         } else if (SoftKeyboard.mActiveKeyboard != "en_US" && key.codes[0] == 'L') {
             getOnKeyboardActionListener().onKey('Ɣ', null);
+            return true;
+        } else if (SoftKeyboard.mActiveKeyboard != "en_US" && key.codes[0] == 'J') {
+            getOnKeyboardActionListener().onKey('ǰ', null);
             return true;
         } else {
             return super.onLongPress(key);
@@ -400,6 +406,8 @@ public class LatinKeyboardView extends KeyboardView {
                             canvas.drawText(String.valueOf("ǧ"), key.x + (key.width / 2) + 10, key.y + keyYLocation, paint);
                         } else if (key.label.toString().equals("l")) {
                             canvas.drawText(String.valueOf("ɣ"), key.x + (key.width / 2) + 10, key.y + keyYLocation, paint);
+                        } else if (key.label.toString().equals("j")) {
+                            canvas.drawText(String.valueOf("ǰ"), key.x + (key.width / 2) + 10, key.y + keyYLocation, paint);
                         }
                     } else if (SoftKeyboard.mActiveKeyboard == "ps_latin_AF_Shift") {
                         if (key.label.toString().equals("A")) {
@@ -416,8 +424,10 @@ public class LatinKeyboardView extends KeyboardView {
                             canvas.drawText(String.valueOf("Ṇ"), key.x + (key.width / 2) + 10, key.y + keyYLocation, paint);
                         } else if (key.label.toString().equals("G")) {
                             canvas.drawText(String.valueOf("Ǧ"), key.x + (key.width / 2) + 10, key.y + keyYLocation, paint);
-                        } else if (key.label.toString().equals("H")) {
+                        } else if (key.label.toString().equals("L")) {
                             canvas.drawText(String.valueOf("Ɣ"), key.x + (key.width / 2) + 10, key.y + keyYLocation, paint);
+                        } else if (key.label.toString().equals("J")) {
+                            canvas.drawText(String.valueOf("ǰ"), key.x + (key.width / 2) + 10, key.y + keyYLocation, paint);
                         }
                     }
                 }
