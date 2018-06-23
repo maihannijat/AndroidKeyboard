@@ -14,7 +14,7 @@
         android:largeHeap="true"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.sunzala.afghankeyboard.MainActivity">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,7 +22,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.sunzala.afghankeyboard.android.ImePreferences"
+            android:name=".android.ImePreferences"
             android:label="@string/settings_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -30,7 +30,7 @@
         </activity>
 
         <service
-            android:name="com.sunzala.afghankeyboard.android.SoftKeyboard"
+            android:name=".android.SoftKeyboard"
             android:permission="android.permission.BIND_INPUT_METHOD">
             <intent-filter>
                 <action android:name="android.view.InputMethod" />
@@ -42,7 +42,7 @@
         </service>
 
         <activity
-            android:name="com.sunzala.afghankeyboard.ThemeActivity"
+            android:name=".ThemeActivity"
             android:label="@string/choose_theme_title" />
     </application>
 

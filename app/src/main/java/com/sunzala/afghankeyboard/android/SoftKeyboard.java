@@ -17,6 +17,7 @@ package com.sunzala.afghankeyboard.android;
 
 import android.app.Dialog;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.inputmethodservice.InputMethodService;
 import android.inputmethodservice.Keyboard;
 import android.inputmethodservice.KeyboardView;
@@ -39,13 +40,10 @@ import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
 import android.view.inputmethod.InputMethodManager;
 import android.view.inputmethod.InputMethodSubtype;
-
 import com.sunzala.afghankeyboard.R;
 import com.sunzala.afghankeyboard.database.DatabaseManager;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import github.ankushsachdeva.emojicon.EmojiconGridView;
 import github.ankushsachdeva.emojicon.EmojiconsPopup;
 import github.ankushsachdeva.emojicon.emoji.Emojicon;
@@ -107,7 +105,10 @@ public class SoftKeyboard extends InputMethodService
     private ArrayList<String> list;
     SharedPreferences sharedPreferences;
 
-    static final int[] THE_LAYOUTS={R.layout.input_1, R.layout.input_2, R.layout.input_3,
+    private Cursor mCursor;
+    private static final String LOG_TAG = "LOG_TAG";
+
+    static final int[] THE_LAYOUTS = {R.layout.input_1, R.layout.input_2, R.layout.input_3,
             R.layout.input_4, R.layout.input_5, R.layout.input_6, R.layout.input_7,
             R.layout.input_8, R.layout.input_9, R.layout.input_10};
 
@@ -327,8 +328,9 @@ public class SoftKeyboard extends InputMethodService
                 mCurKeyboard = getSelectedSubtype();
                 updateShiftKeyState(attribute);
         }
-        if (mCurKeyboard == mPashtoLatinKeyboard || mCurKeyboard == mPashtoLatinShiftedKeyboard) mPredictionOn = false;
-        if(mPredictionOn) db = new DatabaseManager(this);
+        if (mCurKeyboard == mPashtoLatinKeyboard || mCurKeyboard == mPashtoLatinShiftedKeyboard)
+            mPredictionOn = false;
+        if (mPredictionOn) db = new DatabaseManager(this);
 
         // Update the label on the enter key, depending on what the application
         // says it will do.
@@ -366,7 +368,7 @@ public class SoftKeyboard extends InputMethodService
             mInputView.closing();
         }
 
-        if(db != null) db.close();
+        if (db != null) db.close();
     }
 
     @Override
@@ -648,6 +650,7 @@ public class SoftKeyboard extends InputMethodService
      * Implementation of KeyboardViewListener
      */
     public void onKey(int primaryCode, int[] keyCodes) {
+
         if (isWordSeparator(primaryCode)) {
             // Handle separator
             if (mComposing.length() > 0) {
@@ -657,6 +660,9 @@ public class SoftKeyboard extends InputMethodService
                 if (list != null) {
                     clearCandidateView();
                 }
+
+                // Add update word in the dictionary
+                addUpdateWord();
             }
             sendKey(primaryCode);
             updateShiftKeyState(getCurrentInputEditorInfo());
@@ -689,8 +695,7 @@ public class SoftKeyboard extends InputMethodService
             } else if ((current == mSymbolsKeyboard || current == mSymbolsShiftedKeyboard) && getSelectedSubtype() == mPashtoLatinKeyboard) {
                 setLatinKeyboard(mPashtoLatinKeyboard);
                 updateShiftIcon();
-            }
-            else if (current == mSymbolsKeyboard || current == mSymbolsShiftedKeyboard) {
+            } else if (current == mSymbolsKeyboard || current == mSymbolsShiftedKeyboard) {
                 setLatinKeyboard(mQwertyKeyboard);
                 updateShiftIcon();
             } else {
@@ -834,11 +839,11 @@ public class SoftKeyboard extends InputMethodService
             mSymbolsShiftedKeyboard.setShifted(false);
             setLatinKeyboard(mSymbolsKeyboard);
             mSymbolsKeyboard.setShifted(false);
-        } else if(mPashtoLatinKeyboard == currentKeyboard) {
+        } else if (mPashtoLatinKeyboard == currentKeyboard) {
             setLatinKeyboard(mPashtoLatinShiftedKeyboard);
             mActiveKeyboard = "ps_latin_AF_Shift";
             mPashtoLatinKeyboard.setShifted(false);
-        } else if(mPashtoLatinShiftedKeyboard == currentKeyboard) {
+        } else if (mPashtoLatinShiftedKeyboard == currentKeyboard) {
             setLatinKeyboard(mPashtoLatinKeyboard);
             mActiveKeyboard = "ps_latin_AF";
             mPashtoLatinShiftedKeyboard.setShifted(false);
@@ -1057,9 +1062,36 @@ public class SoftKeyboard extends InputMethodService
     }
 
     /**
+     * Add or update word in the dictionary
+     */
+    public void addUpdateWord() {
+
+        if (!getLastWord().isEmpty()) {
+            Integer freq = db.getWordFrequency(getLastWord(), mActiveKeyboard);
+            if (freq > 0) {
+                db.updateRecord(getLastWord().toLowerCase(), freq, mActiveKeyboard);
+            } else {
+                db.insertNewRecord(getLastWord().toLowerCase(), mActiveKeyboard);
+            }
+        }
+    }
+
+    /**
+     * Return a last word from input connection with space
+     *
+     * @return
+     */
+    public String getLastWord() {
+        CharSequence inputChars = getCurrentInputConnection().getTextBeforeCursor(50, 0);
+        String inputString = String.valueOf(inputChars);
+
+        return inputString.substring(inputString.lastIndexOf(" ") + 1);
+    }
+
+    /**
      * Clear the candidate view.
      */
     public void clearCandidateView() {
-        if(list != null)list.clear();
+        if (list != null) list.clear();
     }
 }

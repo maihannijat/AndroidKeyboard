@@ -64,11 +64,11 @@ public class DatabaseManager {
                 break;
             case "pashto":
                 cursor = db.rawQuery("SELECT " + getWordColumnName() + " FROM " + getPashtoTableName() + " WHERE " + getWordColumnName()
-                        + " LIKE '" + str + "%' ORDER BY " + getWordColumnName() + " LIMIT 10", null);
+                        + " LIKE '" + str + "%' ORDER BY " + getFreqColumnName() + " DESC LIMIT 10", null);
                 break;
             case "farsi":
                 cursor = db.rawQuery("SELECT " + getWordColumnName() + " FROM " + getFarsiTableName() + " WHERE " + getWordColumnName()
-                        + " LIKE '" + str + "%' ORDER BY " + getWordColumnName() + " LIMIT 10", null);
+                        + " LIKE '" + str + "%' ORDER BY " + getFreqColumnName() + " DESC LIMIT 10", null);
                 break;
             default:
                 break;
@@ -79,12 +79,101 @@ public class DatabaseManager {
     /**
      * The method adds the new words into database to use it in suggestions
      */
-    public void insertNewRecord(String str, String tableName) {
-        String insertQuery = "INSERT INTO " + tableName
-                + "(" + getFreqColumnName() + ", " + getWordColumnName() + " VALUES ('" + 200 + "', '" + str + "' )";
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
-        db.execSQL(insertQuery);
-        db.close();
+    public void insertNewRecord(String str, String subType) {
+
+        String tableName = "";
+
+        switch (subType) {
+            case "en_US":
+                tableName = getEnglishTableName();
+                break;
+            case "fa_AF":
+                tableName = getFarsiTableName();
+                break;
+            case "ps_AF":
+                tableName = getPashtoTableName();
+                break;
+            default:
+                break;
+        }
+
+        if(!tableName.equals("")) {
+            String insertQuery = "INSERT INTO " + tableName
+                    + "(" + getFreqColumnName() + ", " + getWordColumnName() + ") VALUES ('" + 1 + "', '" + str + "' )";
+            SQLiteDatabase db = dbHelper.getWritableDatabase();
+            db.execSQL(insertQuery);
+        }
+    }
+
+    /**
+     * The method adds the new words into database to use it in suggestions
+     */
+    public void updateRecord(String str, Integer freq, String subType) {
+
+        String tableName = "";
+
+        switch (subType) {
+            case "en_US":
+                tableName = getEnglishTableName();
+                break;
+            case "fa_AF":
+                tableName = getFarsiTableName();
+                break;
+            case "ps_AF":
+                tableName = getPashtoTableName();
+                break;
+            default:
+                break;
+        }
+
+        if(!tableName.equals("")) {
+
+            String insertQuery = "UPDATE " + tableName
+                    + " SET " + getFreqColumnName() + "= " + (freq + 1) + " WHERE word = '" + str + "'";
+            SQLiteDatabase db = dbHelper.getWritableDatabase();
+            db.execSQL(insertQuery);
+        }
+    }
+
+    public Integer getWordFrequency(String str, String subType) {
+
+        String tableName = "";
+
+        switch (subType) {
+            case "en_US":
+                tableName = getEnglishTableName();
+                break;
+            case "fa_AF":
+                tableName = getFarsiTableName();
+                break;
+            case "ps_AF":
+                tableName = getPashtoTableName();
+                break;
+            default:
+                break;
+        }
+
+        Integer freq = 0;
+
+        if(!tableName.equals("")) {
+
+            try {
+
+                cursor = db.rawQuery("SELECT " + getFreqColumnName() + " FROM " + tableName + " WHERE " + getWordColumnName()
+                        + " = '" + str + "'", null);
+
+                cursor.moveToFirst();
+                if (!cursor.isAfterLast()) {
+                    do {
+                        freq = cursor.getInt(0);
+                    } while (cursor.moveToNext());
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                Log.e("DB ERROR", e.toString());
+            }
+        }
+        return freq;
     }
 
     // The following methods return the database and column names from string.xml.
@@ -119,7 +208,5 @@ public class DatabaseManager {
     public void close() {
         if(cursor != null) { cursor.close(); }
         if(db != null) { db.close(); }
-
-        Log.d("Close", "Database");
     }
 }
