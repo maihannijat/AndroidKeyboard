@@ -41,11 +41,13 @@
     <string name="add_languages">LANGUAGES</string>
     <string name="choose_input_method">INPUT</string>
     <string name="choose_theme">THEMES</string>
-    <string name="manage_dictionaries">Dictionaries</string>
+    <string name="dictionaries">Dictionaries</string>
+    <string name="manage_dictionaries">Manage Dictionaries</string>
     <string name="about">About</string>
     <string name="step_1">Step 1</string>
     <string name="step_2">Step 2</string>
     <string name="step_3">Step 3</string>
     <string name="choose_theme_title">Keyboard Themes</string>
     <string name="test_the_keyboard_here">Test the keyboard here.</string>
+    <string name="about_info"><![CDATA[Afghan Keyboard is a complete solution for both Pashto and Dari (Farsi) Afghanistan national languages along with native numbers and symbols. The application also has English keyboard (letters, numbers & symbols) and Pashto Latin keyboard. This keyboard is built-in which enables users to type Pashto, Pashto Latin, Dari (Farsi) or English letters in any Android application.\n\nThe application is developed based on recommendations and reviews received on our Pashto Keyboard, therefore we highly recommend to post your reviews to help us serve you best.\n\nSend us an email at info@sunzala.com, if you have any concerns.]]></string>
 </resources>

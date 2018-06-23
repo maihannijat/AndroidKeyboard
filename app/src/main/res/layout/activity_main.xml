@@ -179,7 +179,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:text="@string/manage_dictionaries"
+                android:text="@string/dictionaries"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="14sp"
