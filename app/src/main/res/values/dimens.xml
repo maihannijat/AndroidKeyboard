@@ -7,7 +7,7 @@
     <dimen name="candidate_font_height">18sp</dimen>
     <dimen name="candidate_vertical_padding">8sp</dimen>
     <dimen name="keyPreviewOffset">30dp</dimen>
-    <dimen name="button_minWidth">190dp</dimen>
+    <dimen name="button_minWidth">110dp</dimen>
     <dimen name="canvasTextSize">8sp</dimen>
     <dimen name="canvasKeyY">18px</dimen>
 </resources>

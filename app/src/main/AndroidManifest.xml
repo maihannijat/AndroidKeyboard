@@ -44,6 +44,8 @@
         <activity
             android:name=".ThemeActivity"
             android:label="@string/choose_theme_title" />
+        <activity android:name=".DictionaryActivity" />
+        <activity android:name=".AboutActivity"></activity>
     </application>
 
 </manifest>

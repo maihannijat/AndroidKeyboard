@@ -21,7 +21,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity
         implements View.OnClickListener {
 
-    private LinearLayout enableSetting, addKeyboards, chooseInputMethod, chooseTheme, installDictionary;
+    private LinearLayout enableSetting, addKeyboards, chooseInputMethod, chooseTheme;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,12 +32,10 @@ public class MainActivity extends AppCompatActivity
         addKeyboards = (LinearLayout) findViewById(R.id.layout_AddLanguages);
         chooseInputMethod = (LinearLayout) findViewById(R.id.layout_ChooseInput);
         chooseTheme = (LinearLayout) findViewById(R.id.layout_ChooseTheme);
-        installDictionary = (LinearLayout) findViewById(R.id.layout_dictionary);
         enableSetting.setOnClickListener(this);
         addKeyboards.setOnClickListener(this);
         chooseInputMethod.setOnClickListener(this);
         chooseTheme.setOnClickListener(this);
-        installDictionary.setOnClickListener(this);
 
         AdView adView = (AdView) this.findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder()

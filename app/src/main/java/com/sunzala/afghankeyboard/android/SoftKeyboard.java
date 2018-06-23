@@ -17,7 +17,6 @@ package com.sunzala.afghankeyboard.android;
 
 import android.app.Dialog;
 import android.content.SharedPreferences;
-import android.database.Cursor;
 import android.inputmethodservice.InputMethodService;
 import android.inputmethodservice.Keyboard;
 import android.inputmethodservice.KeyboardView;
@@ -27,6 +26,7 @@ import android.os.IBinder;
 import android.preference.PreferenceManager;
 import android.text.InputType;
 import android.text.method.MetaKeyKeyListener;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyCharacterMap;
 import android.view.KeyEvent;
@@ -105,10 +105,7 @@ public class SoftKeyboard extends InputMethodService
     private ArrayList<String> list;
     SharedPreferences sharedPreferences;
 
-    private Cursor mCursor;
-    private static final String LOG_TAG = "LOG_TAG";
-
-    static final int[] THE_LAYOUTS = {R.layout.input_1, R.layout.input_2, R.layout.input_3,
+    int[] THE_LAYOUTS = {R.layout.input_1, R.layout.input_2, R.layout.input_3,
             R.layout.input_4, R.layout.input_5, R.layout.input_6, R.layout.input_7,
             R.layout.input_8, R.layout.input_9, R.layout.input_10};
 
@@ -161,10 +158,11 @@ public class SoftKeyboard extends InputMethodService
     @Override
     public View onCreateInputView() {
 
+        Log.d("THEME", String.valueOf(sharedPreferences.getInt(THEME_KEY, 100)));
 
         // Set custom theme to input view.
         mInputView = (LatinKeyboardView) getLayoutInflater().inflate(
-                THE_LAYOUTS[sharedPreferences.getInt(THEME_KEY, 1)], null);
+                THE_LAYOUTS[sharedPreferences.getInt(THEME_KEY, 0)], null);
         mInputView.setOnKeyboardActionListener(this);
 
         // Close popup keyboard when screen is touched, if it's showing
@@ -235,7 +233,7 @@ public class SoftKeyboard extends InputMethodService
     /**
      * This is the main point where we do our initialization of the input method
      * to begin operating on an application.  At this point we have been
-     * bound to the client, and are now receiving all of the detailed information
+     * bound to the client, and are now receiving all of the detailed ic_information_48
      * about the target of our edits.
      */
     @Override
@@ -473,9 +471,7 @@ public class SoftKeyboard extends InputMethodService
             return false;
         }
 
-        boolean dead = false;
         if ((c & KeyCharacterMap.COMBINING_ACCENT) != 0) {
-            dead = true;
             c = c & KeyCharacterMap.COMBINING_ACCENT_MASK;
         }
 

@@ -38,13 +38,13 @@ class LatinKeyboard extends Keyboard {
      */
     private Key mLanguageSwitchKey;
     /**
-     * Stores the size and other information of {@link #mModeChangeKey} when
+     * Stores the size and other ic_information_48 of {@link #mModeChangeKey} when
      * {@link #mLanguageSwitchKey} is visible. This should be immutable and will be used only as a
      * reference size when the visibility of {@link #mLanguageSwitchKey} is changed.
      */
     private Key mSavedModeChangeKey;
     /**
-     * Stores the size and other information of {@link #mLanguageSwitchKey} when it is visible.
+     * Stores the size and other ic_information_48 of {@link #mLanguageSwitchKey} when it is visible.
      * This should be immutable and will be used only as a reference size when the visibility of
      * {@link #mLanguageSwitchKey} is changed.
      */

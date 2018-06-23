@@ -24,46 +24,28 @@
         <Key
             android:keyEdgeFlags="left"
             android:keyLabel="ص"
-            android:popupCharacters="ض۱"
+            android:popupCharacters="ض"
             android:popupKeyboard="@xml/popup_keyboard" />
         <Key
-            android:keyLabel="ث"
-            android:popupCharacters="۲"
-            android:popupKeyboard="@xml/popup_keyboard" />
+            android:keyLabel="ث"/>
         <Key
-            android:keyLabel="ق"
-            android:popupCharacters="۳"
-            android:popupKeyboard="@xml/popup_keyboard" />
+            android:keyLabel="ق" />
         <Key
-            android:keyLabel="ف"
-            android:popupCharacters="۴"
-            android:popupKeyboard="@xml/popup_keyboard" />
+            android:keyLabel="ف" />
         <Key
-            android:keyLabel="ځ"
-            android:popupCharacters="۵"
-            android:popupKeyboard="@xml/popup_keyboard" />
+            android:keyLabel="ځ" />
         <Key
             android:keyLabel="څ"
-            android:keyWidth="10%"
-            android:popupCharacters="۶"
-            android:popupKeyboard="@xml/popup_keyboard" />
+            android:keyWidth="10%" />
         <Key
-            android:keyLabel="خ"
-            android:popupCharacters="۷"
-            android:popupKeyboard="@xml/popup_keyboard" />
+            android:keyLabel="خ" />
         <Key
-            android:keyLabel="ح"
-            android:popupCharacters="۸"
-            android:popupKeyboard="@xml/popup_keyboard" />
+            android:keyLabel="ح" />
         <Key
-            android:keyLabel="چ"
-            android:popupCharacters="۹"
-            android:popupKeyboard="@xml/popup_keyboard" />
+            android:keyLabel="چ" />
         <Key
             android:keyEdgeFlags="right"
-            android:keyLabel="ج"
-            android:popupCharacters="۰"
-            android:popupKeyboard="@xml/popup_keyboard" />
+            android:keyLabel="ج" />
     </Row>
 
     <Row>

@@ -77,34 +77,34 @@ public class ThemeActivity extends AppCompatActivity implements View.OnClickList
 
         switch (view.getId()) {
             case R.id.theme1_imageButton:
-                editor.putInt(THEME_KEY, 1).apply();
+                editor.putInt(THEME_KEY, 0).apply();
                 break;
             case R.id.theme2_imageButton:
-                editor.putInt(THEME_KEY, 2).apply();
+                editor.putInt(THEME_KEY, 1).apply();
                 break;
             case R.id.theme3_imageButton:
-                editor.putInt(THEME_KEY, 3).apply();
+                editor.putInt(THEME_KEY, 2).apply();
                 break;
             case R.id.theme4_imageButton:
-                editor.putInt(THEME_KEY, 4).apply();
+                editor.putInt(THEME_KEY, 3).apply();
                 break;
             case R.id.theme5_imageButton:
-                editor.putInt(THEME_KEY, 5).apply();
+                editor.putInt(THEME_KEY, 4).apply();
                 break;
             case R.id.theme6_imageButton:
-                editor.putInt(THEME_KEY, 6).apply();
+                editor.putInt(THEME_KEY, 5).apply();
                 break;
             case R.id.theme7_imageButton:
-                editor.putInt(THEME_KEY, 7).apply();
+                editor.putInt(THEME_KEY, 6).apply();
                 break;
             case R.id.theme8_imageButton:
-                editor.putInt(THEME_KEY, 8).apply();
+                editor.putInt(THEME_KEY, 7).apply();
                 break;
             case R.id.theme9_imageButton:
-                editor.putInt(THEME_KEY, 9).apply();
+                editor.putInt(THEME_KEY, 8).apply();
                 break;
             case R.id.theme10_imageButton:
-                editor.putInt(THEME_KEY, 10).apply();
+                editor.putInt(THEME_KEY, 9).apply();
                 break;
             default:
                 break;

@@ -15,6 +15,7 @@
     <string name="label_subtype_generic">%s</string>
     <string name="label_subtype_en_GB">English (GB)</string>
     <string name="pashto_latin_label">Pashto Latin</string>
+    <string name="pashto_phonetic_label">Pashto Phonetic</string>
 
     <!-- Titles for ImePreference -->
     <string name="settings_name">Afghan Keyboard Settings</string>
@@ -36,13 +37,15 @@
     <string name="banner_unitID">ca-app-pub-6404264627814552/8236146819</string>
     <string name="interstitial_unitID">ca-app-pub-6404264627814552/5366440892</string>
 
-    <string name="enable_in_settings">ENABLE IN SETTINGS</string>
-    <string name="add_languages">ADD LANGUAGES</string>
-    <string name="choose_input_method">CHOOSE INPUT METHOD</string>
+    <string name="enable_in_settings">ENABLE</string>
+    <string name="add_languages">LANGUAGES</string>
+    <string name="choose_input_method">INPUT</string>
+    <string name="choose_theme">THEMES</string>
+    <string name="manage_dictionaries">Dictionaries</string>
+    <string name="about">About</string>
     <string name="step_1">Step 1</string>
     <string name="step_2">Step 2</string>
     <string name="step_3">Step 3</string>
-    <string name="choose_theme">CHOOSE THEME</string>
     <string name="choose_theme_title">Keyboard Themes</string>
     <string name="test_the_keyboard_here">Test the keyboard here.</string>
 </resources>
