@@ -1,12 +1,16 @@
 package com.sunzala.afghankeyboard;
 
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.InputType;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,7 +25,7 @@ import java.util.ArrayList;
 
 public class DictionaryActivity extends AppCompatActivity implements View.OnClickListener {
 
-    EditText searchText;
+    EditText searchEditText;
     Spinner languageSpinner;
     ArrayList<String> languages, words;
 
@@ -35,20 +39,13 @@ public class DictionaryActivity extends AppCompatActivity implements View.OnClic
         setContentView(R.layout.activity_dictionary);
 
         languageSpinner = findViewById(R.id.spinner);
-        searchText = findViewById(R.id.searchText);
+        searchEditText = findViewById(R.id.searchText);
         Button searchButton = findViewById(R.id.searchButton);
         mRecyclerView = findViewById(R.id.recyclerView);
-
-        mRecyclerView.setHasFixedSize(true);
 
         // use a linear layout manager
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
-
-        // specify an adapter
-        words = new ArrayList<>();
-        mAdapter = new SearchAdapter(words);
-        mRecyclerView.setAdapter(mAdapter);
 
         // Set event listener on search button
         searchButton.setOnClickListener(this);
@@ -76,15 +73,39 @@ public class DictionaryActivity extends AppCompatActivity implements View.OnClic
     }
 
     private void search() {
-        String searchWord = searchText.getText().toString();
+        String searchWord = searchEditText.getText().toString();
 
         if(!searchWord.equals("")) {
             DatabaseManager db = new DatabaseManager(this);
 
             String language = languages.get(languageSpinner.getSelectedItemPosition());
+
+            words = new ArrayList<>();
             words = db.getAllRow(searchWord, language.toLowerCase());
+
+            if(words.size() > 0) {
+                // specify an adapter
+                mAdapter = new SearchAdapter(words, this, language.toLowerCase());
+                mRecyclerView.setAdapter(mAdapter);
+                mAdapter.notifyDataSetChanged();
+
+                // Hide Keyboard
+                hideKeyboard();
+            } else {
+                Toast.makeText(this, getString(R.string.no_result), Toast.LENGTH_LONG).show();
+            }
         } else {
             Toast.makeText(this, getString(R.string.search_hint_toast), Toast.LENGTH_LONG).show();
+        }
+    }
+
+    private void hideKeyboard() {
+        // Check if no view has focus:
+        View view = this.getCurrentFocus();
+        if (view != null) {
+            InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+            assert imm != null;
+            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
         }
     }
 }
