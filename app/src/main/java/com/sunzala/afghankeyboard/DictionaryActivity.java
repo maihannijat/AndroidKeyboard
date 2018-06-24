@@ -21,7 +21,7 @@ public class DictionaryActivity extends AppCompatActivity implements View.OnClic
 
     EditText searchText;
     Spinner languageSpinner;
-    ArrayList<String> languages;
+    ArrayList<String> languages, words;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +65,7 @@ public class DictionaryActivity extends AppCompatActivity implements View.OnClic
             DatabaseManager db = new DatabaseManager(this);
 
             String language = languages.get(languageSpinner.getSelectedItemPosition());
+            words = db.getAllRow(searchWord, language);
         } else {
             Toast.makeText(this, getString(R.string.search_hint_toast), Toast.LENGTH_LONG).show();
         }
