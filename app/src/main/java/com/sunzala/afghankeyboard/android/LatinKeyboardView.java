@@ -80,11 +80,6 @@ public class LatinKeyboardView extends KeyboardView {
             getOnKeyboardActionListener().onKey('ϐ', null);
             return true;
 
-            // For Pashto and Farsi
-        } else if (key.codes[0] == 'ا') {
-            getOnKeyboardActionListener().onKey('آ', null);
-            return true;
-
             // For Farsi Keyboard
         } else if (SoftKeyboard.mActiveKeyboard == "fa_AF" && key.codes[0] == 'ض') {
             getOnKeyboardActionListener().onKey('۱', null);
@@ -157,15 +152,14 @@ public class LatinKeyboardView extends KeyboardView {
         } else if (SoftKeyboard.mActiveKeyboard == "ps_AF" && key.codes[0] == 'ط') {
             getOnKeyboardActionListener().onKey('ظ', null);
             return true;
-        }
-        else if (SoftKeyboard.mActiveKeyboard == "ps_AF" && key.codes[0] == 'ټ') {
+        } else if (SoftKeyboard.mActiveKeyboard == "ps_AF" && key.codes[0] == 'ټ') {
             getOnKeyboardActionListener().onKey('ة', null);
             return true;
 
             // For Latin Keys
-        }else if (SoftKeyboard.mActiveKeyboard != "en_US" && (key.codes[0] == 'w' || key.codes[0] == 'W')) {
-                getOnKeyboardActionListener().onKey('1', null);
-                return true;
+        } else if (SoftKeyboard.mActiveKeyboard != "en_US" && (key.codes[0] == 'w' || key.codes[0] == 'W')) {
+            getOnKeyboardActionListener().onKey('1', null);
+            return true;
         } else if (key.codes[0] == 'ə' || key.codes[0] == 'Ə') {
             getOnKeyboardActionListener().onKey('2', null);
             return true;
@@ -279,7 +273,10 @@ public class LatinKeyboardView extends KeyboardView {
 
                     // for Pashto and Farsi keyboards.
                 else if (key.label.toString().equals("ا"))
-                    canvas.drawText(String.valueOf("آ"), key.x + (key.width / 2) + 10, key.y + keyYLocation, paint);
+                    canvas.drawText(String.valueOf("آ ء"), key.x + (key.width / 2) + 10, key.y + keyYLocation, paint);
+
+                else if (key.label.toString().equals("."))
+                    canvas.drawText(String.valueOf("..."), key.x + (key.width / 2) + 10, key.y + keyYLocation, paint);
 
                     // for Farsi keyboards.
                 else if (SoftKeyboard.mActiveKeyboard == "fa_AF") {
@@ -319,34 +316,7 @@ public class LatinKeyboardView extends KeyboardView {
                     // For Pashto Language
                 } else if (SoftKeyboard.mActiveKeyboard == "ps_AF") {
                     if (key.label.toString().equals("ص"))
-                        canvas.drawText(String.valueOf("۱"), key.x + (key.width / 2) + 10, key.y + keyYLocation, paint);
-
-                    else if (key.label.toString().equals("ث"))
-                        canvas.drawText(String.valueOf("۲"), key.x + (key.width / 2) + 10, key.y + keyYLocation, paint);
-
-                    else if (key.label.toString().equals("ق"))
-                        canvas.drawText(String.valueOf("۳"), key.x + (key.width / 2) + 10, key.y + keyYLocation, paint);
-
-                    else if (key.label.toString().equals("ف"))
-                        canvas.drawText(String.valueOf("۴"), key.x + (key.width / 2) + 10, key.y + keyYLocation, paint);
-
-                    else if (key.label.toString().equals("ځ"))
-                        canvas.drawText(String.valueOf("۵"), key.x + (key.width / 2) + 10, key.y + keyYLocation, paint);
-
-                    else if (key.label.toString().equals("څ"))
-                        canvas.drawText(String.valueOf("۶"), key.x + (key.width / 2) + 10, key.y + keyYLocation, paint);
-
-                    else if (key.label.toString().equals("خ"))
-                        canvas.drawText(String.valueOf("۷"), key.x + (key.width / 2) + 10, key.y + keyYLocation, paint);
-
-                    else if (key.label.toString().equals("ح"))
-                        canvas.drawText(String.valueOf("۸"), key.x + (key.width / 2) + 10, key.y + keyYLocation, paint);
-
-                    else if (key.label.toString().equals("چ"))
-                        canvas.drawText(String.valueOf("۹"), key.x + (key.width / 2) + 10, key.y + keyYLocation, paint);
-
-                    else if (key.label.toString().equals("ج"))
-                        canvas.drawText(String.valueOf("۰"), key.x + (key.width / 2) + 10, key.y + keyYLocation, paint);
+                        canvas.drawText(String.valueOf("ض"), key.x + (key.width / 2) + 10, key.y + keyYLocation, paint);
 
                     else if (key.label.toString().equals("ن"))
                         canvas.drawText(String.valueOf("ڼ"), key.x + (key.width / 2) + 10, key.y + keyYLocation, paint);

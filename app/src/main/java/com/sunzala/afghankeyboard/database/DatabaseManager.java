@@ -56,35 +56,145 @@ public class DatabaseManager {
         return wordList;
     }
 
-    private Cursor queryString(String str, String subType) {
+    private void queryString(String str, String subType) {
         switch (subType) {
             case "english":
                 cursor = db.rawQuery("SELECT " + getWordColumnName() + " FROM " + getEnglishTableName() + " WHERE " + getWordColumnName()
-                        + " LIKE '" + str + "%' ORDER BY " + getFreqColumnName() + " DESC LIMIT 10", null);
+                        + " LIKE '" + str + "%' AND " + getFreqColumnName() + " > 10 ORDER BY " + getFreqColumnName() + " DESC LIMIT 10", null);
                 break;
             case "pashto":
                 cursor = db.rawQuery("SELECT " + getWordColumnName() + " FROM " + getPashtoTableName() + " WHERE " + getWordColumnName()
-                        + " LIKE '" + str + "%' ORDER BY " + getWordColumnName() + " LIMIT 10", null);
+                        + " LIKE '" + str + "%' AND " + getFreqColumnName() + " > 10 ORDER BY " + getFreqColumnName() + " DESC LIMIT 10", null);
                 break;
             case "farsi":
                 cursor = db.rawQuery("SELECT " + getWordColumnName() + " FROM " + getFarsiTableName() + " WHERE " + getWordColumnName()
-                        + " LIKE '" + str + "%' ORDER BY " + getWordColumnName() + " LIMIT 10", null);
+                        + " LIKE '" + str + "%' AND " + getFreqColumnName() + " > 10 ORDER BY " + getFreqColumnName() + " DESC LIMIT 10", null);
                 break;
             default:
                 break;
         }
-        return cursor;
+    }
+
+    public void delete(String str, String subType) {
+        String query = "";
+        switch (subType) {
+            case "english":
+                query = ("DELETE FROM " + getEnglishTableName() + " WHERE " + getWordColumnName()
+                        + " = \"" + str + "\"");
+                break;
+            case "pashto":
+                query = ("DELETE FROM " + getPashtoTableName() + " WHERE " + getWordColumnName()
+                        + " = '" + str + "'");
+                break;
+            case "farsi":
+                query = ("DELETE FROM " + getFarsiTableName() + " WHERE " + getWordColumnName()
+                        + " = '" + str + "'");
+                break;
+            default:
+                break;
+        }
+
+        db.execSQL(query);
     }
 
     /**
      * The method adds the new words into database to use it in suggestions
      */
-    public void insertNewRecord(String str, String tableName) {
-        String insertQuery = "INSERT INTO " + tableName
-                + "(" + getFreqColumnName() + ", " + getWordColumnName() + " VALUES ('" + 200 + "', '" + str + "' )";
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
-        db.execSQL(insertQuery);
-        db.close();
+    public void insertNewRecord(String str, String subType) {
+
+        String tableName = "";
+
+        switch (subType) {
+            case "en_US":
+                tableName = getEnglishTableName();
+                break;
+            case "fa_AF":
+                tableName = getFarsiTableName();
+                break;
+            case "ps_AF":
+                tableName = getPashtoTableName();
+                break;
+            default:
+                break;
+        }
+
+        if(!tableName.equals("")) {
+            String insertQuery = "INSERT INTO " + tableName
+                    + "(" + getFreqColumnName() + ", " + getWordColumnName() + ") VALUES ('" + 1 + "', '" + str + "' )";
+            SQLiteDatabase db = dbHelper.getWritableDatabase();
+            db.execSQL(insertQuery);
+        }
+    }
+
+    /**
+     * The method adds the new words into database to use it in suggestions
+     */
+    public void updateRecord(String str, Integer freq, String subType) {
+
+        String tableName = "";
+
+        switch (subType) {
+            case "en_US":
+                tableName = getEnglishTableName();
+                break;
+            case "fa_AF":
+                tableName = getFarsiTableName();
+                break;
+            case "ps_AF":
+                tableName = getPashtoTableName();
+                break;
+            default:
+                break;
+        }
+
+        if(!tableName.equals("")) {
+
+            String insertQuery = "UPDATE " + tableName
+                    + " SET " + getFreqColumnName() + "= " + (freq + 1) + " WHERE word = '" + str + "'";
+            SQLiteDatabase db = dbHelper.getWritableDatabase();
+            db.execSQL(insertQuery);
+        }
+    }
+
+    public Integer getWordFrequency(String str, String subType) {
+
+        String tableName = "";
+
+        switch (subType) {
+            case "en_US":
+                tableName = getEnglishTableName();
+                break;
+            case "fa_AF":
+                tableName = getFarsiTableName();
+                break;
+            case "ps_AF":
+                tableName = getPashtoTableName();
+                break;
+            default:
+                break;
+        }
+
+        Integer freq = 0;
+
+        if(!tableName.equals("")) {
+
+            try {
+
+                cursor = db.rawQuery("SELECT " + getFreqColumnName() + " FROM " + tableName + " WHERE " + getWordColumnName()
+                        + " = '" + str + "'", null);
+
+                cursor.moveToFirst();
+                if (!cursor.isAfterLast()) {
+                    do {
+                        freq = cursor.getInt(0);
+                    } while (cursor.moveToNext());
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                Log.e("DB ERROR", e.toString());
+            }
+        }
+        return freq;
     }
 
     // The following methods return the database and column names from string.xml.
@@ -119,7 +229,5 @@ public class DatabaseManager {
     public void close() {
         if(cursor != null) { cursor.close(); }
         if(db != null) { db.close(); }
-
-        Log.d("Close", "Database");
     }
 }

@@ -16,7 +16,7 @@
  */
 -->
 
-<!-- The attributes in this XML file provide configuration information --><!-- for the Search Manager. -->
+<!-- The attributes in this XML file provide configuration ic_information_48 --><!-- for the Search Manager. -->
 
 <input-method xmlns:android="http://schemas.android.com/apk/res/android"
     android:settingsActivity="com.sunzala.afghankeyboard.android.ImePreferences"

@@ -23,46 +23,30 @@
     <Row>
         <Key
             android:keyEdgeFlags="left"
-            android:keyLabel="w"
-            android:popupCharacters="1"
-            android:popupKeyboard="@xml/popup_keyboard" />
+            android:keyLabel="w" />
         <Key
-            android:keyLabel="ə"
-            android:popupCharacters="2"
-            android:popupKeyboard="@xml/popup_keyboard" />
+            android:keyLabel="ə" />
         <Key
-            android:keyLabel="e"
-            android:popupCharacters="3"
-            android:popupKeyboard="@xml/popup_keyboard" />
+            android:keyLabel="e" />
         <Key
             android:keyLabel="r"
-            android:popupCharacters="ṛ4"
+            android:popupCharacters="ṛ"
             android:popupKeyboard="@xml/popup_keyboard" />
         <Key
             android:keyLabel="t"
-            android:popupCharacters="ṭ5"
+            android:popupCharacters="ṭ"
             android:popupKeyboard="@xml/popup_keyboard" />
         <Key
-            android:keyLabel="y"
-            android:popupCharacters="6"
-            android:popupKeyboard="@xml/popup_keyboard" />
+            android:keyLabel="y" />
         <Key
-            android:keyLabel="u"
-            android:popupCharacters="7"
-            android:popupKeyboard="@xml/popup_keyboard" />
+            android:keyLabel="u" />
         <Key
-            android:keyLabel="i"
-            android:popupCharacters="8"
-            android:popupKeyboard="@xml/popup_keyboard" />
+            android:keyLabel="i"/>
         <Key
-            android:keyLabel="o"
-            android:popupCharacters="9"
-            android:popupKeyboard="@xml/popup_keyboard" />
+            android:keyLabel="o"/>
         <Key
             android:keyEdgeFlags="right"
-            android:keyLabel="p"
-            android:popupCharacters="0"
-            android:popupKeyboard="@xml/popup_keyboard" />
+            android:keyLabel="p"/>
     </Row>
 
     <Row>
@@ -70,7 +54,7 @@
             android:horizontalGap="4%p"
             android:keyEdgeFlags="left"
             android:keyLabel="a"
-            android:popupCharacters="áā"
+            android:popupCharacters="ā"
             android:popupKeyboard="@xml/popup_keyboard"/>
         <Key
             android:keyLabel="s"

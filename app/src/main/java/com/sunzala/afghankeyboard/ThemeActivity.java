@@ -4,6 +4,7 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
@@ -17,8 +18,13 @@ import com.google.android.gms.ads.InterstitialAd;
 public class ThemeActivity extends AppCompatActivity implements View.OnClickListener {
 
     public static final String THEME_KEY = "theme_key";
+    public static final String AD_COUNT = "ad_count";
+    public InterstitialAd interstitialAd;
+    public AdRequest adRequest;
 
     private SharedPreferences sharedPreferences;
+    private SharedPreferences.Editor editor;
+    private Integer counter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,21 +60,23 @@ public class ThemeActivity extends AppCompatActivity implements View.OnClickList
         }
 
         AdView adView = this.findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder()
+        adRequest = new AdRequest.Builder()
                 .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
                 .addTestDevice("D17FE6D8441E3F2375E3709A2EED851B")
                 .build();
         adView.loadAd(adRequest);
 
-        final InterstitialAd interstitialAd = new InterstitialAd(this);
-        interstitialAd.setAdUnitId(getString(R.string.interstitial_unitID));
-        interstitialAd.loadAd(adRequest);
+        // Display the full screen Ad after third visit.
+        counter = sharedPreferences.getInt(AD_COUNT, 0);
+        editor = sharedPreferences.edit();
 
-        interstitialAd.setAdListener(new AdListener() {
-            public void onAdLoaded() {
-                interstitialAd.show();
-            }
-        });
+        if(2 == counter) {
+            interstitialAd = new InterstitialAd(this);
+            interstitialAd.setAdUnitId(getString(R.string.interstitial_unitID));
+            interstitialAd.loadAd(adRequest);
+        } else {
+            editor.putInt(AD_COUNT, sharedPreferences.getInt(AD_COUNT, 0) + 1).apply();
+        }
     }
 
     @Override
@@ -77,34 +85,34 @@ public class ThemeActivity extends AppCompatActivity implements View.OnClickList
 
         switch (view.getId()) {
             case R.id.theme1_imageButton:
-                editor.putInt(THEME_KEY, 1).apply();
+                editor.putInt(THEME_KEY, 0).apply();
                 break;
             case R.id.theme2_imageButton:
-                editor.putInt(THEME_KEY, 2).apply();
+                editor.putInt(THEME_KEY, 1).apply();
                 break;
             case R.id.theme3_imageButton:
-                editor.putInt(THEME_KEY, 3).apply();
+                editor.putInt(THEME_KEY, 2).apply();
                 break;
             case R.id.theme4_imageButton:
-                editor.putInt(THEME_KEY, 4).apply();
+                editor.putInt(THEME_KEY, 3).apply();
                 break;
             case R.id.theme5_imageButton:
-                editor.putInt(THEME_KEY, 5).apply();
+                editor.putInt(THEME_KEY, 4).apply();
                 break;
             case R.id.theme6_imageButton:
-                editor.putInt(THEME_KEY, 6).apply();
+                editor.putInt(THEME_KEY, 5).apply();
                 break;
             case R.id.theme7_imageButton:
-                editor.putInt(THEME_KEY, 7).apply();
+                editor.putInt(THEME_KEY, 6).apply();
                 break;
             case R.id.theme8_imageButton:
-                editor.putInt(THEME_KEY, 8).apply();
+                editor.putInt(THEME_KEY, 7).apply();
                 break;
             case R.id.theme9_imageButton:
-                editor.putInt(THEME_KEY, 9).apply();
+                editor.putInt(THEME_KEY, 8).apply();
                 break;
             case R.id.theme10_imageButton:
-                editor.putInt(THEME_KEY, 10).apply();
+                editor.putInt(THEME_KEY, 9).apply();
                 break;
             default:
                 break;
@@ -121,5 +129,16 @@ public class ThemeActivity extends AppCompatActivity implements View.OnClickList
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (2 == counter && interstitialAd.isLoaded()) {
+            interstitialAd.show();
+
+            //Reset the counter
+            editor.putInt(AD_COUNT, sharedPreferences.getInt(AD_COUNT, 0)).apply();
+        }
+        super.onBackPressed();
     }
 }
