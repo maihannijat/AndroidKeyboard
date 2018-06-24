@@ -158,8 +158,6 @@ public class SoftKeyboard extends InputMethodService
     @Override
     public View onCreateInputView() {
 
-        Log.d("THEME", String.valueOf(sharedPreferences.getInt(THEME_KEY, 100)));
-
         // Set custom theme to input view.
         mInputView = (LatinKeyboardView) getLayoutInflater().inflate(
                 THE_LAYOUTS[sharedPreferences.getInt(THEME_KEY, 0)], null);
