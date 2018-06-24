@@ -56,7 +56,7 @@ public class DatabaseManager {
         return wordList;
     }
 
-    private Cursor queryString(String str, String subType) {
+    private void queryString(String str, String subType) {
         switch (subType) {
             case "english":
                 cursor = db.rawQuery("SELECT " + getWordColumnName() + " FROM " + getEnglishTableName() + " WHERE " + getWordColumnName()
@@ -73,7 +73,6 @@ public class DatabaseManager {
             default:
                 break;
         }
-        return cursor;
     }
 
     /**
