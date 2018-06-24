@@ -19,8 +19,10 @@
   <component name="ChangeListManager">
     <list default="true" id="b71c04c3-193e-4600-b1b2-07ef35bfa9df" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_dictionary.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_dictionary.xml" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/sunzala/afghankeyboard/DictionaryActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/sunzala/afghankeyboard/DictionaryActivity.java" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
+      <change beforePath="$PROJECT_DIR$/emoji/build/intermediates/incremental/packageDebugResources/compile-file-map.properties" afterPath="$PROJECT_DIR$/emoji/build/intermediates/incremental/packageDebugResources/compile-file-map.properties" />
+      <change beforePath="$PROJECT_DIR$/emoji/emoji.iml" afterPath="$PROJECT_DIR$/emoji/emoji.iml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -43,17 +45,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="DictionaryActivity.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="DictionaryActivity.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sunzala/afghankeyboard/DictionaryActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="10" column="48" lean-forward="false" selection-start-line="10" selection-start-column="48" selection-end-line="10" selection-end-column="48" />
-              <folding />
+            <state relative-caret-position="765">
+              <caret line="66" column="87" lean-forward="false" selection-start-line="66" selection-start-column="87" selection-end-line="66" selection-end-column="87" />
+              <folding>
+                <element signature="e#1471#1479#0" expanded="true" />
+                <element signature="e#2146#2183#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="activity_dictionary.xml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="activity_dictionary.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_dictionary.xml">
           <provider selected="true" editor-type-id="android-designer2">
             <state />
@@ -66,6 +71,16 @@
                 <element signature="e#1505#1533#0" expanded="true" />
                 <element signature="e#2556#2572#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="strings.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="193">
+              <caret line="35" column="0" lean-forward="false" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -2959,7 +2974,6 @@
       <list>
         <option value="$PROJECT_DIR$/app/src/main/java/com/sunzala/afghankeyboard/models/Word.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/arrays.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/sunzala/afghankeyboard/DictionaryActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/sunzala/afghankeyboard/database/DatabaseManager.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/xml/pashto_phonetic.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/xml/method.xml" />
@@ -2976,8 +2990,9 @@
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/sunzala/afghankeyboard/AboutActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_about.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_dictionary.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/sunzala/afghankeyboard/DictionaryActivity.java" />
       </list>
     </option>
   </component>
@@ -3251,7 +3266,14 @@
       <option name="project" value="LOCAL" />
       <updated>1529796221787</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Layout design for ManageDictionaries activity.">
+      <created>1529798216831</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1529798216831</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TodoView">
@@ -3307,7 +3329,8 @@
     <MESSAGE value="Insert and update functionality added in the DatabaseManager and SoftKeyboard.java to learn from users typing and improve word prediction." />
     <MESSAGE value="The MainActivity and Theme Layouts are redesigned." />
     <MESSAGE value="The about us activity added with the content." />
-    <option name="LAST_COMMIT_MESSAGE" value="The about us activity added with the content." />
+    <MESSAGE value="Layout design for ManageDictionaries activity." />
+    <option name="LAST_COMMIT_MESSAGE" value="Layout design for ManageDictionaries activity." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -3623,14 +3646,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="178">
-          <caret line="33" column="51" lean-forward="true" selection-start-line="33" selection-start-column="51" selection-end-line="33" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sunzala/afghankeyboard/AboutActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
@@ -3658,14 +3673,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sunzala/afghankeyboard/DictionaryActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="10" column="48" lean-forward="false" selection-start-line="10" selection-start-column="48" selection-end-line="10" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_dictionary.xml">
       <provider selected="true" editor-type-id="android-designer2">
         <state />
@@ -3677,6 +3684,25 @@
             <element signature="e#892#913#0" expanded="true" />
             <element signature="e#1505#1533#0" expanded="true" />
             <element signature="e#2556#2572#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="193">
+          <caret line="35" column="0" lean-forward="false" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sunzala/afghankeyboard/DictionaryActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="765">
+          <caret line="66" column="87" lean-forward="false" selection-start-line="66" selection-start-column="87" selection-end-line="66" selection-end-column="87" />
+          <folding>
+            <element signature="e#1471#1479#0" expanded="true" />
+            <element signature="e#2146#2183#0" expanded="true" />
           </folding>
         </state>
       </provider>
