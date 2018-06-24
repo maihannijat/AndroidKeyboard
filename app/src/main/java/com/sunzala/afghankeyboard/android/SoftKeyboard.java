@@ -1065,9 +1065,9 @@ public class SoftKeyboard extends InputMethodService
         if (!getLastWord().isEmpty()) {
             Integer freq = db.getWordFrequency(getLastWord(), mActiveKeyboard);
             if (freq > 0) {
-                db.updateRecord(getLastWord().toLowerCase(), freq, mActiveKeyboard);
+                db.updateRecord(getLastWord(), freq, mActiveKeyboard);
             } else {
-                db.insertNewRecord(getLastWord().toLowerCase(), mActiveKeyboard);
+                db.insertNewRecord(getLastWord(), mActiveKeyboard);
             }
         }
     }
