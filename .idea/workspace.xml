@@ -17,13 +17,11 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b71c04c3-193e-4600-b1b2-07ef35bfa9df" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+    <list default="true" id="b71c04c3-193e-4600-b1b2-07ef35bfa9df" name="Default" comment="Calls delete function on DatabaseManager and delete the word. Update the adapter to refresh the list.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/app/app.iml" afterPath="$PROJECT_DIR$/app/app.iml" />
       <change beforePath="$PROJECT_DIR$/app/build.gradle" afterPath="$PROJECT_DIR$/app/build.gradle" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/sunzala/afghankeyboard/DictionaryActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/sunzala/afghankeyboard/DictionaryActivity.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/sunzala/afghankeyboard/adapter/SearchAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/sunzala/afghankeyboard/adapter/SearchAdapter.java" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/sunzala/afghankeyboard/android/SoftKeyboard.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/sunzala/afghankeyboard/android/SoftKeyboard.java" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/sunzala/afghankeyboard/database/DatabaseManager.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/sunzala/afghankeyboard/database/DatabaseManager.java" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_dictionary.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_dictionary.xml" />
@@ -3009,8 +3007,8 @@
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/sunzala/afghankeyboard/DictionaryActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/sunzala/afghankeyboard/adapter/SearchAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/sunzala/afghankeyboard/database/DatabaseManager.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/sunzala/afghankeyboard/android/SoftKeyboard.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/sunzala/afghankeyboard/database/DatabaseManager.java" />
       </list>
     </option>
   </component>
@@ -3038,6 +3036,28 @@
       <pane id="AndroidView">
         <subPane>
           <expand>
+            <path>
+              <item name="AfghanKeyboard_v4" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+            </path>
+            <path>
+              <item name="AfghanKeyboard_v4" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+            </path>
+            <path>
+              <item name="AfghanKeyboard_v4" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="afghankeyboard" type="cbb59c9e:AndroidPsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="AfghanKeyboard_v4" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="afghankeyboard" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="database" type="462c0819:PsiDirectoryNode" />
+            </path>
             <path>
               <item name="AfghanKeyboard_v4" type="1abcf292:AndroidViewProjectNode" />
               <item name="Gradle Scripts" type="ae0cef3a:AndroidBuildScriptsGroupNode" />
@@ -3310,7 +3330,14 @@
       <option name="project" value="LOCAL" />
       <updated>1529803888138</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Calls delete function on DatabaseManager and delete the word. Update the adapter to refresh the list.">
+      <created>1529812635360</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1529812635360</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TodoView">
@@ -3371,7 +3398,8 @@
     <MESSAGE value="SDK changed to 27." />
     <MESSAGE value="SearchAdapter added for RecyclerView." />
     <MESSAGE value="CustomLayout added for search words RecyclerView list." />
-    <option name="LAST_COMMIT_MESSAGE" value="CustomLayout added for search words RecyclerView list." />
+    <MESSAGE value="Calls delete function on DatabaseManager and delete the word. Update the adapter to refresh the list." />
+    <option name="LAST_COMMIT_MESSAGE" value="Calls delete function on DatabaseManager and delete the word. Update the adapter to refresh the list." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -3769,18 +3797,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sunzala/afghankeyboard/database/DatabaseManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-401">
-          <caret line="94" column="11" lean-forward="true" selection-start-line="94" selection-start-column="11" selection-end-line="94" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sunzala/afghankeyboard/android/SoftKeyboard.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="338">
           <caret line="1072" column="5" lean-forward="false" selection-start-line="1072" selection-start-column="5" selection-end-line="1072" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sunzala/afghankeyboard/database/DatabaseManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-782">
+          <caret line="2" column="7" lean-forward="false" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
           <folding />
         </state>
       </provider>

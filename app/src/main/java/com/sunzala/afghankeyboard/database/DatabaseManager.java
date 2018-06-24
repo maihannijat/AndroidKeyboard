@@ -60,19 +60,41 @@ public class DatabaseManager {
         switch (subType) {
             case "english":
                 cursor = db.rawQuery("SELECT " + getWordColumnName() + " FROM " + getEnglishTableName() + " WHERE " + getWordColumnName()
-                        + " LIKE '" + str + "%' ORDER BY " + getFreqColumnName() + " DESC LIMIT 10", null);
+                        + " LIKE '" + str + "%' AND " + getFreqColumnName() + " > 10 ORDER BY " + getFreqColumnName() + " DESC LIMIT 10", null);
                 break;
             case "pashto":
                 cursor = db.rawQuery("SELECT " + getWordColumnName() + " FROM " + getPashtoTableName() + " WHERE " + getWordColumnName()
-                        + " LIKE '" + str + "%' ORDER BY " + getFreqColumnName() + " DESC LIMIT 10", null);
+                        + " LIKE '" + str + "%' AND " + getFreqColumnName() + " > 10 ORDER BY " + getFreqColumnName() + " DESC LIMIT 10", null);
                 break;
             case "farsi":
                 cursor = db.rawQuery("SELECT " + getWordColumnName() + " FROM " + getFarsiTableName() + " WHERE " + getWordColumnName()
-                        + " LIKE '" + str + "%' ORDER BY " + getFreqColumnName() + " DESC LIMIT 10", null);
+                        + " LIKE '" + str + "%' AND " + getFreqColumnName() + " > 10 ORDER BY " + getFreqColumnName() + " DESC LIMIT 10", null);
                 break;
             default:
                 break;
         }
+    }
+
+    public void delete(String str, String subType) {
+        String query = "";
+        switch (subType) {
+            case "english":
+                query = ("DELETE FROM " + getEnglishTableName() + " WHERE " + getWordColumnName()
+                        + " = \"" + str + "\"");
+                break;
+            case "pashto":
+                query = ("DELETE FROM " + getPashtoTableName() + " WHERE " + getWordColumnName()
+                        + " = '" + str + "'");
+                break;
+            case "farsi":
+                query = ("DELETE FROM " + getFarsiTableName() + " WHERE " + getWordColumnName()
+                        + " = '" + str + "'");
+                break;
+            default:
+                break;
+        }
+
+        db.execSQL(query);
     }
 
     /**
