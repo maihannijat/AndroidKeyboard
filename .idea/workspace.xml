@@ -23,7 +23,6 @@
       <change beforePath="$PROJECT_DIR$/app/build.gradle" afterPath="$PROJECT_DIR$/app/build.gradle" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/sunzala/afghankeyboard/DictionaryActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/sunzala/afghankeyboard/DictionaryActivity.java" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/sunzala/afghankeyboard/android/SoftKeyboard.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/sunzala/afghankeyboard/android/SoftKeyboard.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/sunzala/afghankeyboard/database/DatabaseManager.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/sunzala/afghankeyboard/database/DatabaseManager.java" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_dictionary.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_dictionary.xml" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/search_words_list.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/search_words_list.xml" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
@@ -3337,7 +3336,14 @@
       <option name="project" value="LOCAL" />
       <updated>1529812635360</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Return only those words who has frequency of more than 10.">
+      <created>1529812742480</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1529812742480</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TodoView">
@@ -3399,7 +3405,8 @@
     <MESSAGE value="SearchAdapter added for RecyclerView." />
     <MESSAGE value="CustomLayout added for search words RecyclerView list." />
     <MESSAGE value="Calls delete function on DatabaseManager and delete the word. Update the adapter to refresh the list." />
-    <option name="LAST_COMMIT_MESSAGE" value="Calls delete function on DatabaseManager and delete the word. Update the adapter to refresh the list." />
+    <MESSAGE value="Return only those words who has frequency of more than 10." />
+    <option name="LAST_COMMIT_MESSAGE" value="Return only those words who has frequency of more than 10." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
