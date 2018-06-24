@@ -1,7 +1,11 @@
 # Android Custom Keyboard
 Android Custom Keyboard with subtypes, themes and emoticons.
 
-<img src="https://lh3.googleusercontent.com/uJYQkKG-4Gu5DeAY4UzPfdRf9NndQFucfQeiCTpyEcuQiOgVjMA6qJjC2-YLxVToFyk=h900" width="20%"/>  <img src="https://lh3.googleusercontent.com/_sekIj9dkJLiJ-_38dx8pt93N04UKXCa-fEgEVWXyhPP6hSZauZj4g1tLVCIvZ3N1Ftj=h900" width="20%"/>  <img src="https://lh3.googleusercontent.com/9gRwwBYrQRKN74JRhxX-1H26cwRm2sVDHeioWBxpmjZECYzjbseVHcDQEqM7Irg4ZfA=h900" width="20%"/>  <img src="https://lh3.googleusercontent.com/84cxfDjs6R5FWdx5zSVvOjUFNgTOru-hqwcHkeDqT7e3A3ssHbMXnwPdOlozAfSVt1NB=h900" width="20%"/>  <img src="https://lh3.googleusercontent.com/me93HPefOejoxCMJcwFwpudCMKsNX7dE5b85YZ4wwIDXUO54-5woe1H8YmnMnxg7Sw=h900" width="20%"/>  
+<img src="https://lh3.googleusercontent.com/7aaffRCbl7Ohqx2HIT1CIHHlAj9pHuxRmKWs6nIZDUSoHb1uEYnUVLslgFkzsUDm9Ps=w1280-h681" width="20%"/>  
+<img src="https://lh3.googleusercontent.com/T_u-ZrjhsTXi7lAVYCbMMFHM76NCcs_t6wRfJQQqU42yL0QKvhYqw28ZXURBhN3jQH8=w1280-h681" width="20%"/>  
+<img src="https://lh3.googleusercontent.com/84cxfDjs6R5FWdx5zSVvOjUFNgTOru-hqwcHkeDqT7e3A3ssHbMXnwPdOlozAfSVt1NB=w1280-h681" width="20%"/>  
+<img src="https://lh3.googleusercontent.com/H6ayEfZVC6KTxCbdrvBSQfy_hQU8Qy8CjUVIC4eOjWQI29oQqcktszyPGmAosKTCxGY=w1280-h681" width="20%"/>  
+<img src="https://lh3.googleusercontent.com/j0Z6DA5EubtsL9SnTDr6P9p-erSvRM-pcWsTJV4Ix3bM7Yw6sFBhIxLTsWzlAmYPNQ=w1280-h681" width="20%"/>  
 
 The keyboard is a complete solution for people who are looking for custom keyboard with themes. The application has Pashto (Afghanistan), Dari/Farsi (Afghanistan) and English keyboard (letters, numbers & symbols). This keyboard is built-in which enables users to type Pashto, Dari (Farsi) or English letters in any Android application. 
 
